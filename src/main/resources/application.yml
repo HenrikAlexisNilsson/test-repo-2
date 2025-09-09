@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+bucket4j:
+  enabled: true
+  filters:
+  - cache-name: buckets
+    url: /rate-limiter/current-date
+    rate-limits:
+    - bandwidths:
+      - capacity: 5
+        time: 1
+        unit: minutes
